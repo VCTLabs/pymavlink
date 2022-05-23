@@ -14,7 +14,6 @@ from setuptools import setup, Extension
 import glob, os, shutil, fnmatch, platform, sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from __init__ import __version__
 
 def generate_content():
     # generate the file content...
@@ -106,28 +105,7 @@ class custom_build_py(build_py):
         build_py.run(self)
 
 
-setup (name = 'pymavlink',
-       version = __version__,
-       description = 'Python MAVLink code',
-       long_description = ('A Python library for handling MAVLink protocol streams and log files. This allows for the '
-                           'creation of simple scripts to analyse telemetry logs from autopilots such as ArduPilot which use '
-                           'the MAVLink protocol. See the scripts that come with the package for examples of small, useful '
-                           'scripts that use pymavlink. For more information about the MAVLink protocol see '
-                           'https://mavlink.io/en/'),
-       url = 'https://github.com/ArduPilot/pymavlink/',
-       classifiers=['Development Status :: 5 - Production/Stable',
-                    'Environment :: Console',
-                    'Intended Audience :: Science/Research',
-                    'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
-                    'Operating System :: OS Independent',
-                    'Programming Language :: Python :: 2.7',
-                    'Programming Language :: Python :: 3.6',
-                    'Programming Language :: Python :: 3.7',
-                    'Programming Language :: Python :: 3.8',
-                    'Programming Language :: Python :: 3.9',
-                    'Topic :: Scientific/Engineering',
-                    ],
-       license='LGPLv3',
+setup (
        package_dir = { 'pymavlink' : '.' },
        package_data = { 'pymavlink.dialects.v10' : ['*.xml'],
                         'pymavlink.dialects.v20' : ['*.xml'],
@@ -169,13 +147,6 @@ setup (name = 'pymavlink',
                    'tools/MPU6KSearch.py',
                    'tools/mavlink_bitmask_decoder.py',
                    'tools/magfit_WMM.py',
-       ],
-       install_requires=[
-            'future',
-            'lxml',
-       ],
-       setup_requires=[
-           'future'  # future is required by mavgen, included by this file
        ],
        cmdclass={'build_py': custom_build_py},
        ext_modules = extensions
