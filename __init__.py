@@ -1,2 +1,2 @@
 '''Python MAVLink library - see https://mavlink.io/en/'''
-__version__ = '2.4.30'
+from ._version import __version__
