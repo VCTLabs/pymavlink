@@ -27,7 +27,7 @@ class MAVLogDumpTest(unittest.TestCase):
         test_filepath = pkg_resources.resource_filename(__name__,
                                                         test_filename)
         dump_filename = "tmp.dump"
-        os.system("tools/mavlogdump.py %s >%s" % (test_filepath, dump_filename))
+        os.system("mavlogdump.py %s >%s" % (test_filepath, dump_filename))
         with open(dump_filename) as f:
             got = f.read()
 

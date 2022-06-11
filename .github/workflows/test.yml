@@ -12,10 +12,12 @@ jobs:
     strategy:
       fail-fast: false  # don't cancel if a job from the matrix fails
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8, 3.9, '3.10']
+        python-version: [2.7, 3.5, 3.6, 3.7, 3.8, 3.9, '3.10']
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -90,4 +92,4 @@ jobs:
 
       - name: Test with pytest
         run: |
-          python -m pytest
+          python -m pytest --capture=no tests/
